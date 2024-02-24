@@ -53,8 +53,11 @@ function buildTree(data) { // data as a parameter, passing in a map
         const nodes = rootNode.descendants();
     
         const simulation = d3.forceSimulation(nodes)
-            .force("link", d3.forceLink(links).id(d => d.data.id).distance(50))
-            .force("charge", d3.forceManyBody().strength(-100))
+            .force("link", d3.forceLink(links).id(d => d.data.id).distance(function(d){
+                console.log(d);
+                return d.target.data.difference * 100;
+            }))
+            .force("charge", d3.forceManyBody().strength(-500))
             .force("center", d3.forceCenter(width / 2, height / 2));
     
         // Render links
