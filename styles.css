@@ -28,6 +28,12 @@
     border: solid 1px gray;
 }
 
+.node:active {
+    background-color: #ffffff;
+    color: black;
+    box-shadow: 0 0 10px 4px #56e6ff;
+}
+
 .float-container div {
     float: left;
     clear: none;
