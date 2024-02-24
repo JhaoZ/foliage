@@ -5,7 +5,6 @@ jumpNode("root");
 document.getElementById("displaygraph").style.display  = "none";
 
 
-
 function drawTree() {
     fetch('http://127.0.0.1:5000/get_json_of_tree')
     .then(data => {
@@ -16,6 +15,7 @@ function drawTree() {
         buildTree(JSON.parse(JSON.stringify(post)));
     })
 }
+
 
 
 current_node = "root"

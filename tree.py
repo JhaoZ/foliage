@@ -135,5 +135,5 @@ class tree:
         similar = matrix[len(text2)][len(text1)]
 
 
-        return (similar / len(text1)) if len(text1) > len(text2) else (similar / len(text2)) 
+        return (1 - (similar / len(text1))) if len(text1) > len(text2) else (1 - (similar / len(text2)))
 
