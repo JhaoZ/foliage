@@ -7,13 +7,16 @@
     <link rel="stylesheet" href="styles.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
-<div class="float-container">
+<body style="background-image: linear-gradient(to bottom, #008c9b, #003a49);">
+    
+<div class="float-container" >
     <div>
+        <legend> <p id = "legend">Name should go here</p> </legend>
         <div class="container">
-            <div class = "row">
-                <div class = "col-sm ">
+            <div class = "row justify-content-md-center">
+                <div class = "col-md-6">
                     <div class = "first mb-4">
-                        <legend> <p id = "legend">Name should go here</p> </legend>
+                        
                         <html>
                         <head>
                         <style>
@@ -23,44 +26,41 @@
                         </style>
                         </head>
                         <body>
-                        <textarea id="textbox" name="textbox" rows="25" cols="60">This is a long paragraph of example text.
+                        <textarea class = "numbered" style="font-size: 10.67px; background-color:#ffffff;" id="textbox" name="textbox" rows="37.67" cols="120">This is a long paragraph of example text.
                         </textarea>
                         </body>
                         </html>
                     </div>
-                </div>
-            </div>
-            <div class = "col-sm">
-                <div>
-                </head>
-                <body>
-                <div id="visualization"></div>
-                </body>
-                </html>
-            </div>
-
-            
-
-         
-
-        </div>
-        
-    </div>
-    <div class = "text-right">
-        <div class = "container">
-            <div class = "row">
-                <form action="javascript:submit()">
-                    <div class = "col-sm">
-                        <div class = "second">
-                            <input style="width: 300px;" type="text" id="fname" name="fname"><br><br>
+                    <div class = "text-right">
+                        <div class = "container">
+                            <div class = "row ">
+                                <form action="javascript:submit()">
+                                    <div class = "col-sm px-2">
+                                        <p class="text-light">Enter Name:</p>
+                                    </div>
+                                    <div class = "col-sm">
+                                        <div class = "second">
+                                            <input style="width: 300px;" type="text" id="fname" name="fname"><br><br>
+                                        </div>
+                                    </div>
+                                    <div class = "col-sm px-3">
+                                        <button type = "submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class = "col-sm">
-                        <button type = "submit">Submit</button>
-                    </div>
-                </form>
+                
+                    
+                </div>
+
+                
+                <div class = "col-md-6">
+                    <div id="visualization" class="bg-dark" style="max-width: 700px;"></div>
+                </div>
             </div>
             
+
         </div>
         
     </div>
@@ -68,6 +68,7 @@
    
     </div>
 </div>
+
 <script src="script.js"></script>
 </body>
 

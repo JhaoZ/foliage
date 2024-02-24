@@ -7,16 +7,25 @@
 
 .node {
     display: inline-block;
-    border: solid 1px black;
+    border: solid 1px white;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    background-color: rgb(255, 0, 140);
+    width: 40px;
+    height: 40px;
+    background-color: rgb(228, 96, 168);
+    box-shadow: 0 0 10px 4px #de74e8;
+
     position: absolute;
+    
     text-align: center;
     color: white;
     font-size: 12px;
-    line-height: 20px;
+    line-height: 36px;
+}
+
+.node:hover {
+    box-shadow: 0 0 10px 8px #821d8c;
+    background-color: #ff57e3;
+    border: solid 1px gray;
 }
 
 .float-container div {
@@ -86,3 +95,12 @@ fieldset {
     padding: 20px;
     border: 2px solid red;
 } */
+
+textarea.numbered {
+    background: url(http://i.imgur.com/2cOaJ.png);
+    background-attachment: local;
+    background-repeat: no-repeat;
+    padding-left: 35px;
+    padding-top: 10px;
+    border-color:#ccc;
+}

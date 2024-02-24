@@ -1,24 +1,21 @@
-fetch('http://127.0.0.1:5000/get_json_of_tree')
-.then(data => {
-    return data.json();
-    
-})
-.then(post => {
-    console.log(JSON.stringify(post))
-    buildTree(JSON.parse(JSON.stringify(post)));
-})
+// INITIALIZE ALL TO ROOT
 
-fetch('http://127.0.0.1:5000/get_text_by_name/root')
-.then(data => {
-    return data.json();
-    
-})
-.then(post => {
-    map = JSON.parse(JSON.stringify(post));
-    changeTextBox(map['text']);
-    changeLegend("root")
-})
+drawTree();
+jumpNode("root");
 
+
+
+function drawTree() {
+    fetch('http://127.0.0.1:5000/get_json_of_tree')
+    .then(data => {
+        return data.json();
+        
+    })
+    .then(post => {
+        console.log(JSON.stringify(post))
+        buildTree(JSON.parse(JSON.stringify(post)));
+    })
+}
 
 
 current_node = "root"
@@ -36,10 +33,14 @@ function changeTextBox(text) {
 function buildTree(data) { // data as a parameter, passing in a map
         console.log(data.id)
 
+        d3.select("#visualization").selectAll("*").remove();
 
         const width = 800;
         const height = 600;
         const container = d3.select("#visualization");
+
+
+        
         const svg = container.append("svg")
             .attr("width", width)
             .attr("height", height)
@@ -67,7 +68,7 @@ function buildTree(data) { // data as a parameter, passing in a map
         const nodeElements = container.selectAll(".node")
             .data(nodes)
             .enter().append("div")
-            .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "func(this)")
+            .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "clicknode(this)")
             .html(d => d.data.id);
     
     
@@ -89,12 +90,41 @@ function buildTree(data) { // data as a parameter, passing in a map
 }
 
     
-function func(ob) {
-    console.log(ob.id);
+function clicknode(ob) {
+    clicked_node_name = ob.id;
+    jumpNode(clicked_node_name);
 }
 
-function submit() {
-    text = document.getElementById("textbox").value;
+function jumpNode(name) {
+    console.log("JUMPING");
+    fetch('http://127.0.0.1:5000/get_text_by_name/' + name)
+    .then(data => {
+        return data.json();
+    })
+    .then(post => {
+        map = JSON.parse(JSON.stringify(post));
+        console.log(map['text']);
+        changeTextBox(map['text']);
+        changeLegend(name)
+    });
+    current_node = name;
+}
+
+async function submit() {
+    the_text = document.getElementById("textbox").value;
+    the_text.replace(/\n/g , "\\n");
     node_name = document.getElementById("fname").value;
-    
+    url = 'http://127.0.0.1:5000/add_node/' + current_node + '/' + node_name + '/'
+    // post request to server to add a new node
+    await fetch (url, {
+        method: "POST",
+        body: JSON.stringify({
+            text: the_text
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+    drawTree();
+    jumpNode(node_name);
 }

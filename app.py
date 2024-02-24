@@ -2,8 +2,14 @@
 
 from tree import tree
 from flask import Flask, jsonify, request, render_template
+from flask_cors import CORS, cross_origin
+
+
 
 app = Flask(__name__)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
+
 
 data = tree()
 
@@ -18,15 +24,16 @@ def get_text_by_name(name):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
-@app.route('/add_node/<parent_name>/<name>/<text>', methods = ['POST'])
-def add_node(parent_name, name, text):
+@app.route('/add_node/<parent_name>/<name>/', methods = ['POST'])
+def add_node(parent_name, name):
+    text = request.json['text']
+    print(text)
     parent = data.find_by_name(parent_name)
     if parent.name == "":
         data.append_by_name("root", name, text)
     else:
         data.append_by_name(parent_name, name, text)
     response = jsonify({})
-    response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
 @app.route('/get_json_of_tree', methods = ['GET'])
