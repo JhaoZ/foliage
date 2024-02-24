@@ -69,7 +69,7 @@ function buildTree(data) { // data as a parameter, passing in a map
             .data(nodes)
             .enter().append("div")
             .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "clicknode(this)")
-            .html(d => d.data.id);
+            .html(d => String(d.data.id).substring(0,7));
     
     
     
@@ -82,8 +82,8 @@ function buildTree(data) { // data as a parameter, passing in a map
                 .attr("y2", d => d.target.y);
     
             nodeElements
-                .style("left", d => `${d.x - 10}px`) // Centering the node
-                .style("top", d => `${d.y - 10}px`); // Centering the node
+                .style("left", d => `${d.x - 20}px`) // Centering the node
+                .style("top", d => `${d.y - 20}px`); // Centering the node
         });
     // });
 

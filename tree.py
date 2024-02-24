@@ -114,6 +114,10 @@ class tree:
         if text1 != "" and text2 == "":
             return 1.0
  
+
+        if len(text1) == 0 or len(text2) == 0:
+            return 1.0
+
         matrix = [[0 for x in range(len(text1) + 1)] for y in range(len(text2) + 1)]
 
         for i in range(1, len(text2) + 1):
