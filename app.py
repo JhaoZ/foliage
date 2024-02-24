@@ -56,10 +56,10 @@ def get_graph():
     x = range(0, len(commits))
     
     
-    plt.plot(x, commits)
-    plt.title("Commits vs weights")
-    plt.xlabel("commit #")
-    plt.ylabel("Difference")
+    plt.plot(x, commits, color = "pink")
+    plt.title("Differences Across Commits")
+    plt.xlabel("Number of Commits")
+    plt.ylabel("Difference Percentage Between Commits")
     plt.savefig(img, format = 'png')
     plt.close()
     img.seek(0)
