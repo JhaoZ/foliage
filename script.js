@@ -8,24 +8,32 @@ fetch('http://127.0.0.1:5000/get_json_of_tree')
     buildTree(JSON.parse(JSON.stringify(post)));
 })
 
+fetch('http://127.0.0.1:5000/get_text_by_name/root')
+.then(data => {
+    return data.json();
+    
+})
+.then(post => {
+    map = JSON.parse(JSON.stringify(post));
+    changeTextBox(map['text']);
+    changeLegend("root")
+})
 
-// console.log(response)
 
-// const response = 
+
+current_node = "root"
+
+function changeLegend(text) {
+    console.log("p");
+    document.getElementById("legend").innerText = text;
+}
+
+function changeTextBox(text) {
+    document.getElementById("textbox").value = text;
+}
+
 
 function buildTree(data) { // data as a parameter, passing in a map
-
-    // document.addEventListener('DOMContentLoaded', function() {
-        // const data = {
-        //     id: "Eve",
-        //     children: [
-        //         {id: "Cain"},
-        //         {id: "Seth", children: [{id: "Enos"}, {id: "Noam"}]},
-        //         {id: "Abel"},
-        //         {id: "Awan", children: [{id: "Enoch"}]},
-        //         {id: "Azura"}
-        //     ]
-        // };
         console.log(data.id)
 
 
@@ -83,4 +91,10 @@ function buildTree(data) { // data as a parameter, passing in a map
     
 function func(ob) {
     console.log(ob.id);
+}
+
+function submit() {
+    text = document.getElementById("textbox").value;
+    node_name = document.getElementById("fname").value;
+    
 }
