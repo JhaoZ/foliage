@@ -1,7 +1,7 @@
 
 
 from tree import tree
-from flask import Flask, jsonify, request, render_template, redirect, url_for
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
@@ -14,7 +14,9 @@ def home():
 @app.route('/get_text_by_name/<name>', methods = ['GET'])
 def get_text_by_name(name):
     text = data.find_by_name(name).text
-    return jsonify({'text': text})
+    response = jsonify({'text': text})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/add_node/<parent_name>/<name>/<text>', methods = ['POST'])
 def add_node(parent_name, name, text):
@@ -23,8 +25,12 @@ def add_node(parent_name, name, text):
         data.append_by_name("root", name, text)
     else:
         data.append_by_name(parent_name, name, text)
-    return jsonify({})
+    response = jsonify({})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 @app.route('/get_json_of_tree', methods = ['GET'])
 def get_json_of_tree():
-    return jsonify(data.get_map())
+    response = jsonify(data.get_map())
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
