@@ -70,7 +70,7 @@ function buildTree(data) { // data as a parameter, passing in a map
         const nodeElements = container.selectAll(".node")
             .data(nodes)
             .enter().append("div")
-            .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "clicknode(this)")
+            .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "clicknode(this)").attr("onmouseover", "hovernode(this)")
             .html(d => String(d.data.id).substring(0,7));
     
     
@@ -97,6 +97,18 @@ function clicknode(ob) {
     jumpNode(clicked_node_name);
 }
 
+function hovernode(ob) {
+    hover_node_name = ob.id
+    fetch('http://127.0.0.1:5000/get_commit_by_name/' + hover_node_name)
+    .then(data => {
+        return data.json();
+    })
+    .then(post => {
+        map = JSON.parse(JSON.stringify(post));
+        document.getElementById(hover_node_name).title = map['text']
+    });
+}
+
 function jumpNode(name) {
     console.log("JUMPING");
     fetch('http://127.0.0.1:5000/get_text_by_name/' + name)
@@ -116,12 +128,14 @@ async function submit() {
     the_text = document.getElementById("textbox").value;
     the_text.replace(/\n/g , "\\n");
     node_name = document.getElementById("fname").value;
+    commit_mes = document.getElementById("commitMessage").value;
     url = 'http://127.0.0.1:5000/add_node/' + current_node + '/' + node_name + '/'
     // post request to server to add a new node
     await fetch (url, {
         method: "POST",
         body: JSON.stringify({
-            text: the_text
+            text: the_text,
+            commit: commit_mes,
         }),
         headers: {
             "Content-type": "application/json; charset=UTF-8"

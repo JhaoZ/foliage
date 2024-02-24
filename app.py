@@ -31,15 +31,24 @@ def get_text_by_name(name):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/get_commit_by_name/<name>', methods = ['GET'])
+def get_commit_by_name(name):
+    text = data.find_by_name(name).commit_message
+    response = jsonify({'text': text})
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
+
 @app.route('/add_node/<parent_name>/<name>/', methods = ['POST'])
 def add_node(parent_name, name):
     text = request.json['text']
-    print(text)
+    commit = request.json['commit']
+    
+    print(commit)
     parent = data.find_by_name(parent_name)
     if parent.name == "":
-        data.append_by_name("root", name, text)
+        data.append_by_name("root", name, text, commit_message="")
     else:
-        data.append_by_name(parent_name, name, text)
+        data.append_by_name(parent_name, name, text, commit_message=commit)
     response = jsonify({})
     commits.append(data.find_by_name(name).get_weight())
     return response

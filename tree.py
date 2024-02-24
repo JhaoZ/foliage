@@ -3,6 +3,7 @@ class node:
     name = ""
     parent = None
     weight = 0
+    commit_message = ""
 
     def __init__(self, name, text):
         self.name = name 
@@ -10,7 +11,10 @@ class node:
         self.parent = None
         self.text = text
         self.weight = 0
-
+        self.commit_message = ""
+    
+    def set_commit(self, text):
+        self.commit_message = text
     
     def set_parent(self, n):
         self.parent = n
@@ -102,12 +106,13 @@ class tree:
         
         return node("", "")
 
-    def append_by_name(self, root_name, name, text):
+    def append_by_name(self, root_name, name, text, commit_message = ""):
         finder = self.find_by_name(root_name)
         if finder.name == "" and finder.text == "":
             return
         n = node(name, text)
         n.set_parent(finder)
+        n.set_commit(commit_message)
         n.weight = self.getDiff(finder.text, text)
         finder.addChild(n)
         
@@ -120,6 +125,8 @@ class tree:
         if text1 != "" and text2 == "":
             return 1.0
  
+        if text1 == text2:
+            return 0.0
 
         if len(text1) == 0 or len(text2) == 0:
             return 1.0
