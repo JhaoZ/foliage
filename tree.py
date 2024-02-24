@@ -45,6 +45,7 @@ class tree:
     def helper_get_map(self, n, data_map):
         if len(n.children) == 0:
             data_map['id'] = n.name
+            data_map['difference'] = n.get_weight()
             return data_map
         l = []
         for i in n.children:
