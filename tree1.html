@@ -45,6 +45,16 @@
         <div class=" tab" style="margin-left: 70px; background-color: white;">
             <p class="px-3" id = "legend" style="color: black; width: 200px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">THING</p>
         </div>
+        <div style="margin-left: 470px;">
+          <div class="col tabpress" onclick="showtree()">
+            <p class="px-3" id = "tree" style="color: black; width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Tree</p>
+          </div>
+          <div class="col tabpress" style=" margin-left: 5px;" onclick="showgraph()">
+            <p class="px-3" id = "graph" style="color: black; width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Graph</p>
+          </div>
+        </div>
+        
+
         </br>
         <div class="container" style="margin-left: 60px;">
             <div class = "row justify-content-md-center">
@@ -88,11 +98,20 @@
                 
                     
                 </div>
-
-                
-                <div class = "col-md-6">
-                    <div id="visualization"  style="max-width: 700px; background-color: #0c4c5d; border-radius: 15px; border-color: #ffffff; box-shadow: 0 0 10px 4px #ffffff;"></div>
-                </div>
+                  <div class = "col-md-6">
+                      <div id="visualization"  style="max-width: 700px; background-color: #0c4c5d; border-radius: 15px; border-color: #ffffff; box-shadow: 0 0 10px 4px #ffffff;"></div>
+                      <div id = "displaygraph">
+                        <div class = "px-3 card">
+                          <div class = "mt-1 mb-1" style="height: 600px;">
+                            <img id = "thegraph" src="https://www.whitehouse.gov/wp-content/uploads/2021/04/P20210303AS-1901-cropped.jpg?resize=2048,1536" alt="" style="width: 700px;height: 500px">
+                          </div>
+                          
+                        </div>
+                        
+                    </div>
+                  </div>
+                  
+               
             </div>
             
 

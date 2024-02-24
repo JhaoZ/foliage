@@ -2,6 +2,7 @@
 
 drawTree();
 jumpNode("root");
+document.getElementById("displaygraph").style.display  = "none";
 
 
 
@@ -12,7 +13,6 @@ function drawTree() {
         
     })
     .then(post => {
-        console.log(JSON.stringify(post))
         buildTree(JSON.parse(JSON.stringify(post)));
     })
 }
@@ -21,7 +21,6 @@ function drawTree() {
 current_node = "root"
 
 function changeLegend(text) {
-    console.log("p");
     document.getElementById("legend").innerText = text;
 }
 
@@ -127,4 +126,30 @@ async function submit() {
     })
     drawTree();
     jumpNode(node_name);
+}
+
+function setgraphcode() {
+    fetch('http://127.0.0.1:5000/get_graph')
+    .then(data => {
+        return data.json();
+    })
+    .then(post => {
+        str = JSON.parse(JSON.stringify(post))['text'];
+        document.getElementById("thegraph").src = "data:image/png;base64, " + str;
+
+    })
+}
+
+function showgraph() {
+    document.getElementById("displaygraph").style.display  = 'block';
+    document.getElementById("visualization").style.display  = 'none';
+
+    
+    setgraphcode();
+    
+}
+
+function showtree() {
+    document.getElementById("displaygraph").style.display  = 'none';
+    document.getElementById("visualization").style.display  = 'block';
 }

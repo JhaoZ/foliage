@@ -19,6 +19,22 @@
 }
 
 
+.tabpress {
+  
+    color: white; /* White text color */
+    background-color: white;
+    border-top-left-radius: 0.4rem; /* Match Bootstrap's border radius */
+    border-top-right-radius: 0.4rem; /* Match Bootstrap's border radius */
+    border-top: solid 1px rgb(0, 0, 0);
+    border-left: solid 1px rgb(0, 0, 0);
+    border-right: solid 1px rgb(0, 0, 0);
+    box-shadow: 0 0 15px 2px #ededed;
+    
+}
+
+.tabpress:hover {
+    background-color: gray;
+}
 
 .node {
     display: inline-block;

@@ -20,6 +20,9 @@ class node:
 
     def set_weight(self, w):
         self.weight = w
+
+    def get_weight(self):
+        return self.weight
     
 
 class tree:
