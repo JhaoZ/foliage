@@ -30,7 +30,7 @@ class tree:
 
     def get_map(self):
         data_map = {}
-        data_map['name'] = self.root.name
+        data_map['id'] = self.root.name
         if len(self.root.children) != 0:
             l = []
             for i in self.root.children:
@@ -40,12 +40,12 @@ class tree:
 
     def helper_get_map(self, n, data_map):
         if len(n.children) == 0:
-            data_map['name'] = n.name
+            data_map['id'] = n.name
             return data_map
         l = []
         for i in n.children:
             l.append(self.helper_get_map(i, {}))
-        data_map['name'] = n.name
+        data_map['id'] = n.name
         data_map['children'] = l
         
         return data_map
