@@ -10,9 +10,9 @@ function drawTree() {
     fetch('http://127.0.0.1:5000/get_json_of_tree')
     .then(data => {
         return data.json();
-        
     })
     .then(post => {
+        // console.log(JSON.parse(JSON.stringify(post)));
         buildTree(JSON.parse(JSON.stringify(post)));
     })
 }

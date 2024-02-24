@@ -136,26 +136,3 @@ class tree:
 
         return (similar / len(text1)) if len(text1) > len(text2) else (similar / len(text2)) 
 
-
-
-        
-
-
-t = tree()
-
-
-
-
-t.append_by_name("root", "n1", "HELLO WORLD!")
-t.append_by_name("root", "n2", "hello WORLD!")
-t.append_by_name("n1", "n4", "HELLO WORLD!")
-t.append_by_name("n4", "n5", "HELLO WORLD!")
-
-
-
-
-# print(t.find_by_name("n2").text)
-print(t.get_map())
-# print(t.find_by_name("n4").text)
-# print(t.find_by_name("n2").parent.name)
-        
