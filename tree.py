@@ -28,6 +28,29 @@ class tree:
     def __init__(self):
         self.root = node("root", "")
 
+    def get_map(self):
+        data_map = {}
+        data_map['name'] = self.root.name
+        if len(self.root.children) != 0:
+            l = []
+            for i in self.root.children:
+                l.append(self.helper_get_map(i, {}))
+            data_map['children'] = l
+        return data_map
+
+    def helper_get_map(self, n, data_map):
+        if len(n.children) == 0:
+            data_map['name'] = n.name
+            return data_map
+        l = []
+        for i in n.children:
+            l.append(self.helper_get_map(i, {}))
+        data_map['name'] = n.name
+        data_map['children'] = l
+        
+        return data_map
+        
+
     def distance_from_root(self, name):
         if name == self.root.name:
             return 0
@@ -123,7 +146,7 @@ t.append_by_name("n4", "n5", "HELLO WORLD!")
 
 
 # print(t.find_by_name("n2").text)
-print(t.distance_from_root("n5"))
+print(t.get_map())
 # print(t.find_by_name("n4").text)
 # print(t.find_by_name("n2").parent.name)
         
