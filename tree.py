@@ -39,6 +39,7 @@ class tree:
             for i in self.root.children:
                 l.append(self.helper_get_map(i, {}))
             data_map['children'] = l
+        data_map['difference'] = 0.0
         return data_map
 
     def helper_get_map(self, n, data_map):
@@ -50,6 +51,7 @@ class tree:
             l.append(self.helper_get_map(i, {}))
         data_map['id'] = n.name
         data_map['children'] = l
+        data_map['difference'] = n.get_weight()
         
         return data_map
         

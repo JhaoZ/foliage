@@ -55,8 +55,7 @@ def get_graph():
     img = BytesIO()
     x = range(0, len(commits))
     
-    
-    plt.plot(x, commits, color = "pink")
+    plt.plot(x, commits, color = "pink", marker = ".")
     plt.title("Differences Across Commits")
     plt.xlabel("Number of Commits")
     plt.ylabel("Difference Percentage Between Commits")
