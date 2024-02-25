@@ -6,6 +6,7 @@
     overflow: scroll;
     -ms-overflow-style: none;
     scrollbar-width: none;
+    text-align: center;
 }
 
 #example::-webkit-scrollbar {
