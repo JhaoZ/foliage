@@ -5,6 +5,8 @@ jumpNode("root");
 document.getElementById("displaygraph").style.display  = "none";
 
 
+
+
 function drawTree() {
     fetch('http://127.0.0.1:5000/get_json_of_tree')
     .then(data => {
@@ -78,7 +80,8 @@ function buildTree(data) { // data as a parameter, passing in a map
             .style("position", "absolute")
             .style("top", "0")
             .style("left", "0");
-    
+
+        
         // Convert hierarchical data to a flat structure
         const rootNode = d3.hierarchy(data);
         const links = rootNode.links();
@@ -130,8 +133,6 @@ function buildTree(data) { // data as a parameter, passing in a map
             .attr("class", "node").attr("id", d => d.data.id).attr("onclick", "clicknode(this)").attr("onmouseover", "hovernode(this)")
             .call(drag(simulation))
             .html(d => String(d.data.id).substring(0,7));
-    
-    
     
         // Update positions on simulation tick
         simulation.on("tick", () => {
@@ -236,5 +237,4 @@ async function newFile() {
     });
     jumpNode("root");
     drawTree();
-
 }

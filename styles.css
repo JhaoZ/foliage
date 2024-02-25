@@ -4,7 +4,15 @@
     height: 609px;
     border: 1px solid black;
     overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    text-align: center;
 }
+
+#example::-webkit-scrollbar {
+    display: none;
+}
+  
 
 
 .tab {
