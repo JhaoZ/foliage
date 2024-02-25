@@ -38,6 +38,20 @@ def get_commit_by_name(name):
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
 
+@app.route('/upload', methods = ['POST'])
+def upload():
+    text = request.json['text']
+    data.create_tree_from_file(text)
+    response = jsonify({})
+    return response
+
+@app.route("/new", methods = ['POST'])
+def new():
+    data.clear()
+    commits = [0.0]
+    return jsonify({})
+
+
 @app.route('/add_node/<parent_name>/<name>/', methods = ['POST'])
 def add_node(parent_name, name):
     text = request.json['text']

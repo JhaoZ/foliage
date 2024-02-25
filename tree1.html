@@ -8,8 +8,9 @@
     <script src="https://d3js.org/d3.v7.min.js"></script>
 
 <body style="background-color: #001725;">
+  
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #001725; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-        <a class="navbar-brand" href="#" style="margin-left: 10px;">Navbar</a>
+        <img class="navbar-brand" src="logo.png" style="width: 100px;height: auto; margin-left: 70px;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,8 +23,21 @@
               </div>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
+            <li class="nav-item active" style="margin-left: 10px;" >
+              <div class ="navthing" onclick="javascript:newFile()">
+                <a class="nav-link text-light" >New</a>
+              </div>
+            </li>
+
+            <li class="nav-item active" style="margin-left: 10px;">
+              <div class ="navthing">
+                <button class="nav-link text-light" type = "save" onclick="javascript:download()">Save</button>
+              </div>
+            </li>
+            <li class="nav-item active" style="margin-left: 10px;">
+              <div >
+                <input class="nav-link text-light loadfile"  type="file" id="fileselect" onchange="javascript:upload(event)" >
+              </div>
             </li>
           </ul>
          
@@ -31,7 +45,7 @@
       </nav>
 <div class="float-container " style="margin-top: 20px;" >
     <div>
-        <div class=" tab" style="margin-left: 70px; background-color: white;">
+        <div class=" tab" style="margin-left: 72px; background-color: white;">
             <p class="px-3" id = "legend" style="color: black; width: 200px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">THING</p>
         </div>
         <div style="margin-left: 470px;">
@@ -87,7 +101,9 @@
                                     <div class = "col-sm px-3 ">
                                         <button type = "submit" class="btn btn-success" style="height: 32px; line-height: 10px;">Submit</button>
                                     </div>
+									
                                 </form>
+							
                             </div>
                         </div>
                     </div>
@@ -99,7 +115,7 @@
                       <div id = "displaygraph">
                         <div class = "px-3 card">
                           <div class = "mt-1 mb-1" style="height: 600px;">
-                            <img id = "thegraph" src="" alt="" style="width: 700px;height: 500px">
+                            <img id = "thegraph" src="biden.png" alt="" style="width: 700px;height: 500px">
                           </div>
                           
                         </div>

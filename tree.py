@@ -1,3 +1,6 @@
+import json
+
+
 class node:
 
     name = ""
@@ -34,6 +37,30 @@ class tree:
 
     def __init__(self):
         self.root = node("root", "")
+        
+        file = open("diction.txt", 'r')
+        jsstring = file.read()
+        self.diction = json.loads(jsstring)
+        file.close()
+
+        
+    def clear(self):
+        self.root.children = []
+        
+    def recurse(self, rootname, node):
+        self.append_by_name(rootname, node["id"], self.diction[node["id"]][0], self.diction[node["id"]][1])
+        if "children" in node:
+            for newnode in node["children"]:
+                self.recurse(node["id"], newnode)
+
+
+    def create_tree_from_file(self, jsonstring):
+        self.root.children = []
+        treedict = json.loads(jsonstring)
+        self.root.name = treedict["id"]
+        if "children" in treedict:
+            for node in treedict["children"]:
+                self.recurse(self.root.name, node)
 
     def get_map(self):
         data_map = {}
@@ -112,6 +139,11 @@ class tree:
             return
         n = node(name, text)
         n.set_parent(finder)
+        self.diction[name] = (text, commit_message)
+        newstring = json.dumps(self.diction)
+        file = open("diction.txt", 'w')
+        file.write(newstring);
+        file.close()
         n.set_commit(commit_message)
         n.weight = self.getDiff(finder.text, text)
         finder.addChild(n)

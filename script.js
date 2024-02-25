@@ -11,11 +11,42 @@ function drawTree() {
         return data.json();
     })
     .then(post => {
-        // console.log(JSON.parse(JSON.stringify(post)));
+        console.log(JSON.parse(JSON.stringify(post)));
         buildTree(JSON.parse(JSON.stringify(post)));
     })
 }
 
+function download() {
+	fetch('http://127.0.0.1:5000/get_json_of_tree')
+    .then(data => {
+        return data.json();
+        
+    })
+    .then(post => {
+        var a = document.createElement("a");
+		var file = new Blob([JSON.stringify(post)], {type: 'text/plain'});
+		a.href = URL.createObjectURL(file);
+		a.download = "json.txt",
+		a.click();
+    })
+}
+
+async function upload() {
+	const file = event.target.files.item(0)
+    const tex = await file.text();
+	var url = 'http://127.0.0.1:5000/upload'
+    console.log("UPDLOAD");
+	await fetch (url, {
+        method: "POST",
+        body: JSON.stringify({
+            text: tex
+        }),
+        headers: {
+            "Content-type": "application/json; charset=UTF-8"
+        }
+    })
+	drawTree();
+}
 
 
 current_node = "root"
@@ -198,3 +229,12 @@ function showtree() {
     document.getElementById("visualization").style.display  = 'block';
 }
 
+
+async function newFile() {
+    await fetch ('http://127.0.0.1:5000/new', {
+        method: "POST",
+    });
+    jumpNode("root");
+    drawTree();
+
+}
