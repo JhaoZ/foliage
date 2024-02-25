@@ -35,7 +35,7 @@ async function upload() {
 	const file = event.target.files.item(0)
     const tex = await file.text();
 	var url = 'http://127.0.0.1:5000/upload'
-    console.log("UPDLOAD");
+    
 	await fetch (url, {
         method: "POST",
         body: JSON.stringify({

@@ -10,7 +10,7 @@
 <body style="background-color: #001725;">
   
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #001725; border-bottom-left-radius: 10px; border-bottom-right-radius: 10px;">
-        <img class="navbar-brand" src="logo.png" style="width: 100px;height: auto; margin-left: 70px;">
+        <img class="navbar-brand" src="logo.png" style="width: 150px;height: auto; margin-left: 70px;">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -20,6 +20,12 @@
             <li class="nav-item active" >
               <div class ="navthing">
                 <a class="nav-link text-light" href="#">Home</a>
+              </div>
+            </li>
+
+            <li class="nav-item active"  style="margin-left: 10px;">
+              <div class ="navthing">
+                <a class="nav-link text-light" href="about.html">About</a>
               </div>
             </li>
 
@@ -50,10 +56,10 @@
         </div>
         <div style="margin-left: 470px;">
           <div class="col tabpress" onclick="showtree()">
-            <p class="px-3" id = "tree" style="color: black; width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Tree</p>
+            <p class="px-3" id = "tree" class = "tabp" style=" width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Tree</p>
           </div>
           <div class="col tabpress" style=" margin-left: 5px;" onclick="showgraph()">
-            <p class="px-3" id = "graph" style="color: black; width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Graph</p>
+            <p class="px-3 tabp" id = "graph" style="width: 125px;position: relative; top:6px; border-top-left-radius: 30px;border-top-right-radius: 30px">Graph</p>
           </div>
         </div>
         
@@ -63,7 +69,7 @@
             <div class = "row justify-content-md-center">
                 <div class = "col-md-6">
                 
-                    <div class = "first mb-4">
+                    <div class = "first mb-2">
                         
                         <html>
                         <head>
@@ -74,12 +80,12 @@
                         </style>
                         </head>
                         <body>
-                        <textarea class = "numbered" style="font-size: 10.6688px; background-color:#ffffff;" id="textbox" name="textbox" rows="37" cols="120">This is a long paragraph of example text.
+                        <textarea class = "numbered" style="font-size: 10.6688px; background-color:#ffffff;" id="textbox" name="textbox" rows="32" cols="120">This is a long paragraph of example text.
                         </textarea>
                         </body>
                         </html>
                     </div>
-                    <div class = "text-right">
+                    <div class = "text-right" style="background-color: #033c50; padding-top: 20px; border-radius: 10px;">
                         <div class = "container">
                             <div class = "row ">
                                 <form action="javascript:submit()">
@@ -111,7 +117,7 @@
                     
                 </div>
                   <div class = "col-md-6">
-                      <div id="visualization"  style="max-width: 700px; background-color: #033c50; border-radius: 15px; border-color: #ffffff; box-shadow: 0 0 10px 4px #ffffff;"></div>
+                      <div id="visualization"  style="max-width: 700px; height: 680px; background-color: #033c50; border-radius: 15px; border-color: #ffffff; box-shadow: 0 0 10px 4px #ffffff;"></div>
                       <div id = "displaygraph">
                         <div class = "px-3 card">
                           <div class = "mt-1 mb-1" style="height: 600px;">
