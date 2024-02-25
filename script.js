@@ -33,9 +33,10 @@ function buildTree(data) { // data as a parameter, passing in a map
         console.log(data.id)
 
         d3.select("#visualization").selectAll("*").remove();
-
-        const width = 800;
-        const height = 600;
+        console.log(d3.select("#visualization").node().offsetWidth);
+        console.log(d3.select("#visualization").node().offsetHeight);
+        const width = d3.select("#visualization").node().offsetWidth * 1.5;
+        const height = d3.select("#visualization").node().offsetWidth * 1.5;
         const container = d3.select("#visualization");
 
 
@@ -55,7 +56,7 @@ function buildTree(data) { // data as a parameter, passing in a map
         const simulation = d3.forceSimulation(nodes)
             .force("link", d3.forceLink(links).id(d => d.data.id).distance(function(d){
                 console.log(d);
-                return d.target.data.difference * 100;
+                return d.target.data.difference * 100 + 30;
             }))
             .force("charge", d3.forceManyBody().strength(-500))
             .force("center", d3.forceCenter(width / 2, height / 2));
